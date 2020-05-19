@@ -53,7 +53,6 @@ export function* GET_TOTALS_COUNTRIES() {
 		for (let [key, value] of Object.entries(response[0])) {
 			countryTotals.push(value);
 		}
-
 		yield put({
 			type: actions.SET_STATE,
 			payload: {loadingTable: false, countryTotals}
@@ -76,7 +75,7 @@ export function* GET_TIME_LINE_COUNTRY({payload}) {
 	if (response) {
 		yield put({
 			type: actions.SET_STATE,
-			payload: {loadingLine: false, countryTimeline: response}
+			payload: {loadingLine: false, countryTimeline: response[0]}
 		});
 	} else {
 		yield put({

@@ -1,14 +1,5 @@
 import React from "react";
-import {Doughnut} from "react-chartjs-2";
-import styles from "./style.module.scss";
-
-const colors = {
-	recovered: "#58c558",
-	deaths: "#bd2d2d",
-	critical: "#ef7d08d9",
-	"new cases": "#58c558",
-	"new deaths": "#bd2d2d"
-};
+import {Line} from "react-chartjs-2";
 
 const options = {
 	cutoutPercentage: 65,
@@ -55,31 +46,34 @@ const options = {
 
 class LineChartCountry extends React.Component {
 	constructChartData = () => {
-		const {totals} = this.props;
+		const {countryTimeline} = this.props;
 		const labels = [],
-			data = [],
-			backgroundColor = [];
-		for (let [key, value] of Object.entries(totals)) {
+			data = [];
+		for (let [key, value] of Object.entries(countryTimeline)) {
 			labels.push(key);
-			data.push(value);
-			backgroundColor.push(colors[key]);
+			data.push(value.new_daily_deaths);
 		}
 		// return {labels, data, backgroundColor};
 		return {
 			labels,
 			datasets: [
-				{data: data, backgroundColor, hoverBackgroundColor: backgroundColor}
+				{
+					data: data,
+					backgroundColor: "rgba(75,192,192,0.4)",
+					borderColor: "rgba(75,192,192,1)"
+				}
 			]
 		};
 	};
 
 	render() {
 		const data = this.constructChartData();
+		console.log(data);
 		const {title} = this.props;
 		return (
-			<div className={styles.total_cases_chart}>
+			<div>
 				<h2>{title}</h2>
-				<Doughnut data={data} options={options} />
+				<Line data={data} options={options} />
 			</div>
 		);
 	}

@@ -3,6 +3,7 @@ import {Spin, Col, Row} from "antd";
 import {connect} from "react-redux";
 import TopComponent from "../../components/topComponent";
 import MainComponent from "../../components/mainComponent";
+import LineChartCountry from "../../components/lineChart";
 import actions from "../../redux/actions";
 
 class Dashboard extends React.Component {
@@ -24,7 +25,7 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
-		const {loading, countryTotal} = this.props;
+		const {loading, countryTotal, countryTimeline} = this.props;
 		return (
 			<Spin spinning={loading} tip="Loading...">
 				<Row type="flex" justify="space-between">
@@ -33,6 +34,9 @@ class Dashboard extends React.Component {
 					</Col>
 					<Col span={24}>
 						<MainComponent totals={countryTotal} />
+					</Col>
+					<Col span={18}>
+						<LineChartCountry countryTimeline={countryTimeline} />
 					</Col>
 				</Row>
 			</Spin>
