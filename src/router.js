@@ -1,11 +1,17 @@
 import React from "react";
 import {Route, Switch, BrowserRouter, Redirect} from "react-router-dom";
 import Dashboard from "./pages/dashboard";
+import CountryState from "./pages/countryState";
 
 const routes = [
 	{
 		path: "/dashboard",
 		component: Dashboard,
+		exact: true
+	},
+	{
+		path: "/country/:code",
+		component: CountryState,
 		exact: true
 	}
 ];

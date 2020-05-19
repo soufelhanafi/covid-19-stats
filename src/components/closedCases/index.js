@@ -11,14 +11,12 @@ class ClosedCases extends React.Component {
 			<div className={styles.active_cases_container}>
 				<Row type="flex" justify="center">
 					<Col span={24}>
-						<h2>Active cases</h2>
+						<h2>Closed cases</h2>
 					</Col>
-					<Col>
-						<p>{`${Number(closedCases).toLocaleString(
-							"en-EN"
-						)} currently active patients`}</p>
+					<Col span={24}>
+						<p>{`${Number(closedCases).toLocaleString("en-EN")}`}</p>
 					</Col>
-					<Col>
+					<Col span={24}>
 						<p className={styles.recovered}>
 							Recovered:{" "}
 							{`${Number(totals.total_recovered).toLocaleString("en-EN")} (${(
@@ -27,7 +25,7 @@ class ClosedCases extends React.Component {
 							).toFixed(2)}%)`}
 						</p>
 					</Col>
-					<Col>
+					<Col span={24}>
 						<p className={styles.deaths}>
 							Deaths:{" "}
 							{`${Number(totals.total_deaths).toLocaleString("en-EN")} (${(

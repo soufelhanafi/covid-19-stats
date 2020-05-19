@@ -1,5 +1,6 @@
 import React from "react";
 import {Row, Col, Table} from "antd";
+import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import actions from "../../../redux/actions";
 import styles from "./style.module.scss";
@@ -14,7 +15,10 @@ class ActiveCases extends React.Component {
 	columns = [
 		{
 			title: "Country",
-			dataIndex: "title"
+			dataIndex: "title",
+			render: (text, record) => {
+				return <Link to={"/country/" + record.code}>{text}</Link>;
+			}
 		},
 		{
 			title: "Total cases",
@@ -70,12 +74,12 @@ class ActiveCases extends React.Component {
 
 	render() {
 		const {countryTotals, loadingTable} = this.props;
-
 		return (
 			<div className={styles.country_totals}>
 				<Row type="flex" justify="center">
 					<Col lg={18}>
 						<Table
+							rowKey="ourid"
 							loading={loadingTable}
 							columns={this.columns}
 							dataSource={countryTotals}

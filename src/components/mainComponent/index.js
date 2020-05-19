@@ -1,9 +1,8 @@
 import React from "react";
 import {Row, Col} from "antd";
-import {connect} from "react-redux";
-import TotalCasesChart from "./totalCasesChart";
-import ActiveCases from "./activeCases";
-import ClosedCases from "./closedCases";
+import TotalCasesChart from "../totalCasesChart";
+import ActiveCases from "../activeCases";
+import ClosedCases from "../closedCases";
 import styles from "./style.module.scss";
 
 class MainComponent extends React.Component {
@@ -46,8 +45,4 @@ class MainComponent extends React.Component {
 	}
 }
 
-const mapStateToProps = state => {
-	return state;
-};
-
-export default connect(mapStateToProps)(MainComponent);
+export default MainComponent;

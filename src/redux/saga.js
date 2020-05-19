@@ -21,6 +21,27 @@ export function* GET_MAIN_DASHBOARD_DATA() {
 	}
 }
 
+export function* GET_DASHBOARD_COUNTRY({payload}) {
+	yield put({
+		type: actions.SET_STATE,
+		payload: {loading: true}
+	});
+	const response = yield call(apis.getDashboardCountry, {payload});
+	if (response) {
+		const countryTotal = response[0];
+		yield put({
+			type: actions.SET_STATE,
+			payload: {loading: false, countryTotal}
+		});
+	} else {
+		yield put({
+			type: actions.SET_STATE,
+			payload: {loading: false, totals: {}}
+		});
+		message.error("an error occured, please refresh your page");
+	}
+}
+
 export function* GET_TOTALS_COUNTRIES() {
 	yield put({
 		type: actions.SET_STATE,
@@ -40,7 +61,27 @@ export function* GET_TOTALS_COUNTRIES() {
 	} else {
 		yield put({
 			type: actions.SET_STATE,
-			payload: {loading: false, totals: {}}
+			payload: {loadingTable: false, totals: {}}
+		});
+		message.error("an error occured, please refresh your page");
+	}
+}
+
+export function* GET_TIME_LINE_COUNTRY({payload}) {
+	yield put({
+		type: actions.SET_STATE,
+		payload: {loadingLine: true}
+	});
+	const response = yield call(apis.getTimeLineCountries, {payload});
+	if (response) {
+		yield put({
+			type: actions.SET_STATE,
+			payload: {loadingLine: false, countryTimeline: response}
+		});
+	} else {
+		yield put({
+			type: actions.SET_STATE,
+			payload: {loadingLine: false, totals: {}}
 		});
 		message.error("an error occured, please refresh your page");
 	}
@@ -49,6 +90,8 @@ export function* GET_TOTALS_COUNTRIES() {
 export default function* userSaga() {
 	yield all([
 		takeLatest(actions.GET_MAIN_DASHBOARD_DATA, GET_MAIN_DASHBOARD_DATA),
-		takeLatest(actions.GET_TOTALS_COUNTRIES, GET_TOTALS_COUNTRIES)
+		takeLatest(actions.GET_TOTALS_COUNTRIES, GET_TOTALS_COUNTRIES),
+		takeLatest(actions.GET_TIME_LINE_COUNTRY, GET_TIME_LINE_COUNTRY),
+		takeLatest(actions.GET_DASHBOARD_COUNTRY, GET_DASHBOARD_COUNTRY)
 	]);
 }

@@ -53,7 +53,7 @@ const options = {
 	}
 };
 
-class TotalCasesChart extends React.Component {
+class LineChartCountry extends React.Component {
 	constructChartData = () => {
 		const {totals} = this.props;
 		const labels = [],
@@ -85,4 +85,4 @@ class TotalCasesChart extends React.Component {
 	}
 }
 
-export default TotalCasesChart;
+export default LineChartCountry;

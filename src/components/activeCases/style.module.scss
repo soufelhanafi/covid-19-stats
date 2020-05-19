@@ -9,13 +9,15 @@
   p {
     margin-bottom: 24px;
     font-size: 16px;
+    width: 100%;
+    text-align: center;
   }
 
-  .recovered {
-    color: #58c558;
+  .critical {
+    color: #ef7d08d9;
   }
 
-  .deaths {
-    color: #bd2d2d;
+  .middle {
+    color: #8080FF;
   }
 }

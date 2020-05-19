@@ -3,28 +3,36 @@ import {Spin, Col, Row} from "antd";
 import {connect} from "react-redux";
 import TopComponent from "../../components/topComponent";
 import MainComponent from "../../components/mainComponent";
-import CountriesList from "./countriesList";
 import actions from "../../redux/actions";
+
 class Dashboard extends React.Component {
+	state = {
+		spinning: true,
+		data: []
+	};
+
 	componentDidMount() {
+		const code = this.props.match.params.code;
 		this.props.dispatch({
-			type: actions.GET_MAIN_DASHBOARD_DATA
+			type: actions.GET_DASHBOARD_COUNTRY,
+			payload: {code}
+		});
+		this.props.dispatch({
+			type: actions.GET_TIME_LINE_COUNTRY,
+			payload: {code}
 		});
 	}
 
 	render() {
-		const {loading, totals} = this.props;
+		const {loading, countryTotal} = this.props;
 		return (
 			<Spin spinning={loading} tip="Loading...">
 				<Row type="flex" justify="space-between">
 					<Col span={24}>
-						<TopComponent totals={totals} />
+						<TopComponent totals={countryTotal} />
 					</Col>
 					<Col span={24}>
-						<MainComponent totals={totals} />
-					</Col>
-					<Col span={24}>
-						<CountriesList />
+						<MainComponent totals={countryTotal} />
 					</Col>
 				</Row>
 			</Spin>

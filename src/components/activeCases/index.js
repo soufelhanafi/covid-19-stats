@@ -14,12 +14,12 @@ class ActiveCases extends React.Component {
 					<Col span={24}>
 						<h2>Active cases</h2>
 					</Col>
-					<Col>
+					<Col span={24}>
 						<p>{`${Number(activeCases).toLocaleString(
 							"en-EN"
 						)} currently active patients`}</p>
 					</Col>
-					<Col>
+					<Col span={24}>
 						<p className={styles.middle}>
 							Middle cases:{" "}
 							{`${new Number(middleCase).toLocaleString("en-EN")} (${(
@@ -28,7 +28,7 @@ class ActiveCases extends React.Component {
 							).toFixed(2)}%)`}
 						</p>
 					</Col>
-					<Col>
+					<Col span={24}>
 						<p className={styles.critical}>
 							Critical cases:{" "}
 							{`${Number(totals.total_serious_cases).toLocaleString(

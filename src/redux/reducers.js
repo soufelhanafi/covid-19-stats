@@ -4,7 +4,9 @@ const initialState = {
 	loading: true,
 	totals: [],
 	countryTotals: [],
-	loadingTable: true
+	loadingTable: true,
+	countryTotal: {},
+	countryTimeline: {}
 };
 
 export default function mainReducer(state = initialState, action) {
