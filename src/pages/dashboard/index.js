@@ -18,12 +18,12 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
-		const {loading, totals, totalCases} = this.props;
+		const {loading, totals} = this.props;
 		return (
 			<Spin spinning={loading} tip="Loading...">
 				<Row type="flex" justify="space-between">
 					<Col span={24}>
-						<TopComponent totals={totals} totalCases={totalCases} />
+						<TopComponent totals={totals} />
 					</Col>
 					<Col span={24}>
 						<MainComponent />
