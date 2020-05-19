@@ -26,15 +26,19 @@ class ActiveCases extends React.Component {
 		{
 			title: "Total new cases",
 			dataIndex: "total_new_cases_today",
-			render: text => Number(text).toLocaleString("en-EN"),
 			sorter: (a, b) => a.total_new_cases_today - b.total_new_cases_today,
+			render: text => {
+				return <span>+ {Number(text).toLocaleString("en-EN")}</span>;
+			},
 			className: styles.total_new_cases_column
 		},
 		{
 			title: "Total new deaths",
 			dataIndex: "total_new_deaths_today",
-			render: text => Number(text).toLocaleString("en-EN"),
 			sorter: (a, b) => a.total_new_deaths_today - b.total_new_deaths_today,
+			render: text => {
+				return <span>+ {Number(text).toLocaleString("en-EN")}</span>;
+			},
 			className: styles.deaths_column
 		},
 
