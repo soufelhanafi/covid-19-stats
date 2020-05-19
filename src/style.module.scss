@@ -1,0 +1,22 @@
+.confirm_transfer_modal {
+  width: 700px !important;
+  @media screen and (max-width: 800px) {
+    width: 100%;
+
+    .inputs_containers {
+      margin-top: 10px;
+    }
+  }
+
+  .description {
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .footer_button_container {
+    button {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.topComponent_container {
+  font-size: 20px;
+  text-transform: capitalize;
+  padding: 24px;
+
+  .topComponent {
+    & > div {
+      margin-bottom: 20px;
+      border-right: 1px solid;
+      padding-left: 5px;
+    }
+
+    .confirmed {
+      color: #ffa500;
+    }
+
+    .recovered {
+      color: #58c558;
+    }
+
+    .deaths {
+      color: #bd2d2d;
+    }
+
+    .critical {
+      color: #ef7d08d9;
+    }
+  }
+}
