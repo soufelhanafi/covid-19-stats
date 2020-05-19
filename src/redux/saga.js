@@ -38,7 +38,6 @@ export function* GET_TOTALS_COUNTRIES() {
 			countryTotals.push(value);
 		}
 
-		countryTotals.sort((a, b) => compare(a, b));
 		yield put({
 			type: actions.SET_STATE,
 			payload: {loadingTable: false, countryTotals}
@@ -50,15 +49,6 @@ export function* GET_TOTALS_COUNTRIES() {
 		});
 		message.error("an error occured, please refresh your page");
 	}
-}
-
-function compare(a, b) {
-	if (a.total_new_cases_today < b.total_new_cases_today) {
-		return 1;
-	} else if (a.total_new_cases_today > b.total_new_cases_today) {
-		return -1;
-	}
-	return 0;
 }
 
 export default function* userSaga() {

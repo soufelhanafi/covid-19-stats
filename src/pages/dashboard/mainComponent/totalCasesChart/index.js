@@ -43,8 +43,6 @@ const options = {
 		borderColor: "rgb(255,255,255)",
 		callbacks: {
 			label: function(tooltipItems, data) {
-				debugger;
-
 				const data1 = data.datasets[0].data,
 					index = tooltipItems.index;
 				const labels = data.labels;
@@ -54,11 +52,8 @@ const options = {
 		}
 	}
 };
-class TotalCasesChart extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 
+class TotalCasesChart extends React.Component {
 	constructChartData = () => {
 		const {totals} = this.props;
 		const labels = [],

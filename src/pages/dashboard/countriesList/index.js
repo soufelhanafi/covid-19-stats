@@ -5,10 +5,6 @@ import actions from "../../../redux/actions";
 import styles from "./style.module.scss";
 
 class ActiveCases extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
 		this.props.dispatch({
 			type: actions.GET_TOTALS_COUNTRIES
@@ -18,42 +14,41 @@ class ActiveCases extends React.Component {
 	columns = [
 		{
 			title: "Country",
-			dataIndex: "title",
-			width: 150
+			dataIndex: "title"
+		},
+		{
+			title: "Total cases",
+			dataIndex: "total_cases",
+			render: text => Number(text).toLocaleString("en-EN"),
+			sorter: (a, b) => a.total_cases - b.total_cases,
+			defaultSortOrder: "descend"
 		},
 		{
 			title: "Total new cases",
 			dataIndex: "total_new_cases_today",
-			width: 150,
 			render: text => Number(text).toLocaleString("en-EN"),
-			sorter: (a, b) => a.total_new_cases_today - b.total_new_cases_today
+			sorter: (a, b) => a.total_new_cases_today - b.total_new_cases_today,
+			className: styles.total_new_cases_column
 		},
 		{
 			title: "Total new deaths",
 			dataIndex: "total_new_deaths_today",
 			render: text => Number(text).toLocaleString("en-EN"),
 			sorter: (a, b) => a.total_new_deaths_today - b.total_new_deaths_today,
-			className: styles.deaths_columns
+			className: styles.deaths_column
 		},
-		{
-			title: "Total cases",
-			dataIndex: "total_cases",
-			width: 150,
-			render: text => Number(text).toLocaleString("en-EN"),
-			sorter: (a, b) => a.total_cases - b.total_cases
-		},
+
 		{
 			title: "Total deaths",
 			dataIndex: "total_deaths",
-			width: 150,
 			render: text => Number(text).toLocaleString("en-EN"),
-			sorter: (a, b) => a.total_deaths - b.total_deaths,
-			className: "deaths_columns"
+			sorter: (a, b) => a.total_deaths - b.total_deaths
 		},
 		{
 			title: "Total recovered",
 			dataIndex: "total_recovered",
-			render: text => Number(text).toLocaleString("en-EN")
+			render: text => Number(text).toLocaleString("en-EN"),
+			className: styles.recovered_column
 		},
 		{
 			title: "Active cases",
@@ -80,7 +75,7 @@ class ActiveCases extends React.Component {
 							loading={loadingTable}
 							columns={this.columns}
 							dataSource={countryTotals}
-							pagination={{pageSize: 250}}
+							pagination={false}
 						/>
 					</Col>
 				</Row>

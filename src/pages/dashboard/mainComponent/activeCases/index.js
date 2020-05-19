@@ -3,15 +3,10 @@ import {Row, Col} from "antd";
 import styles from "./style.module.scss";
 
 class ActiveCases extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const {totals} = this.props;
 
-		const activeCases =
-			totals.total_cases - totals.total_deaths - totals.total_recovered;
+		const activeCases = totals.total_active_cases;
 		const middleCase = activeCases - totals.total_serious_cases;
 		return (
 			<div className={styles.active_cases_container}>

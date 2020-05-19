@@ -1,6 +1,24 @@
 .country_totals {
-  .deaths_columns {
-    background-color: red;
+  min-width: 900px;
+
+  .deaths_column {
+    background-color: #bd2d2d !important;
+    border: 1px solid #bd2d2d;
+    color: white;
+  }
+
+  .total_new_cases_column {
+    background-color: #FFEEAA !important;
+    border: 1px solid #FFEEAA;
+  }
+
+  .recovered_column {
+    background-color: #58c558 !important;
+    border: 1px solid #58c558;
+  }
+
+  th {
+    background-color: #000;
   }
 
   table {

@@ -15,17 +15,19 @@ class Router extends React.Component {
 		const {history} = this.props;
 		return (
 			<BrowserRouter history={history}>
-				{routes.map(route => {
-					return (
-						<Route
-							key={route.path}
-							component={route.component}
-							path={route.path}
-							exact
-						/>
-					);
-				})}
-				<Route render={() => <Redirect to="/dashboard" />} />
+				<Switch>
+					{routes.map(route => {
+						return (
+							<Route
+								key={route.path}
+								component={route.component}
+								path={route.path}
+								exact
+							/>
+						);
+					})}
+					<Route render={() => <Redirect to="/dashboard" />} />
+				</Switch>
 			</BrowserRouter>
 		);
 	}

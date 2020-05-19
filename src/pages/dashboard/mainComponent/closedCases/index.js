@@ -3,10 +3,6 @@ import {Row, Col} from "antd";
 import styles from "./style.module.scss";
 
 class ClosedCases extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const {totals} = this.props;
 
