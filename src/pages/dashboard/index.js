@@ -3,6 +3,7 @@ import {Spin, Col, Row} from "antd";
 import {connect} from "react-redux";
 import TopComponent from "./topComponent";
 import MainComponent from "./mainComponent";
+import CountriesList from "./countriesList";
 import actions from "../../redux/actions";
 class Dashboard extends React.Component {
 	state = {
@@ -26,6 +27,9 @@ class Dashboard extends React.Component {
 					</Col>
 					<Col span={24}>
 						<MainComponent />
+					</Col>
+					<Col span={24}>
+						<CountriesList />
 					</Col>
 				</Row>
 			</Spin>
