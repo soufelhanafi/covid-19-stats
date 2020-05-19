@@ -33,7 +33,7 @@ export function getMainDashboardData() {
 }
 
 export function getTotalCountries() {
-	return [];
+	return false;
 	// return axios({
 	// 	url: baseUrl,
 	// 	params: {countryTotals: "ALL"}
