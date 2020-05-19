@@ -6,11 +6,13 @@ import actions from "./actions";
 
 export function* GET_MAIN_DASHBOARD_DATA() {
 	const response = yield call(apis.getMainDashboardData);
-	console.log(response[0]);
 	if (response) {
 		const totals = response[0];
 		const totalCases =
-			totals.confirmed + totals.recovered + totals.deaths + totals.critical;
+			totals.total_cases +
+			totals.total_recovered +
+			totals.total_deaths +
+			totals.total_serious_cases;
 		yield put({
 			type: actions.SET_STATE,
 			payload: {loading: false, totals, totalCases}

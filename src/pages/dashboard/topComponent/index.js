@@ -17,16 +17,16 @@ const TopComponent = ({totals, totalCases}) => {
 					justify="space-between"
 				>
 					<Col className={styles.confirmed} xs={24} sm={24} md={12} lg={6}>
-						Confirmed cases : {totals.confirmed}
+						Confirmed cases : {totals.total_cases}
 					</Col>
 					<Col xs={24} sm={24} md={12} lg={6} className={styles.recovered}>
-						Recovered : {totals.recovered}
+						Recovered : {totals.total_recovered}
 					</Col>
 					<Col xs={24} sm={24} md={12} lg={6} className={styles.deaths}>
-						Deaths : {totals.deaths}
+						Deaths : {totals.total_deaths}
 					</Col>
 					<Col xs={24} sm={24} md={12} lg={6} className={styles.critical}>
-						Critical : {totals.critical}
+						Critical : {totals.total_serious_cases}
 					</Col>
 				</Row>
 			</Col>

@@ -5,7 +5,9 @@ import styles from "./style.module.scss";
 const colors = {
 	recovered: "#58c558",
 	deaths: "#bd2d2d",
-	critical: "#ef7d08d9"
+	critical: "#ef7d08d9",
+	"new cases": "#58c558",
+	"new deaths": "#bd2d2d"
 };
 
 const options = {
@@ -62,10 +64,10 @@ class TotalCasesChart extends React.Component {
 		const labels = [],
 			data = [],
 			backgroundColor = [];
-		for (let [key, value] of Object.entries(colors)) {
+		for (let [key, value] of Object.entries(totals)) {
 			labels.push(key);
-			data.push(totals[key]);
-			backgroundColor.push(value);
+			data.push(value);
+			backgroundColor.push(colors[key]);
 		}
 		// return {labels, data, backgroundColor};
 		return {
@@ -78,9 +80,10 @@ class TotalCasesChart extends React.Component {
 
 	render() {
 		const data = this.constructChartData();
+		const {title} = this.props;
 		return (
 			<div className={styles.total_cases_chart}>
-				<h2>Total cases</h2>
+				<h2>{title}</h2>
 				<Doughnut data={data} options={options} />
 			</div>
 		);

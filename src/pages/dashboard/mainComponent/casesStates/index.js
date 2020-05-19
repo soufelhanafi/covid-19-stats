@@ -2,7 +2,7 @@ import React from "react";
 import {Doughnut} from "react-chartjs-2";
 import styles from "./style.module.scss";
 
-const colors = ["#58c558", "#bd2d2d"];
+const colors = ["#bd2d2d", "#58c558"];
 
 const options = {
 	cutoutPercentage: 65,
@@ -46,7 +46,9 @@ const options = {
 					(100 * data1[index]) /
 					data1.reduce((a, b) => a + b)
 				).toFixed(2);
-				return `${labels[index]} : ${data1[index]} (${percent}%)`;
+				return `${labels[index]} : ${Number(data1[index]).toLocaleString(
+					"en-EN"
+				)} (${percent}%)`;
 			}
 		}
 	}
@@ -60,8 +62,9 @@ class CasesStates extends React.Component {
 	constructChartData = () => {
 		const {totals} = this.props;
 
-		let active = totals.confirmed - totals.deaths - totals.recovered;
-		let closed = totals.deaths + totals.recovered;
+		let active =
+			totals.total_cases - totals.total_deaths - totals.total_recovered;
+		let closed = totals.total_deaths + totals.total_recovered;
 		// return {labels, data, backgroundColor};
 		return {
 			labels: ["Active cases", "Closed cases"],
