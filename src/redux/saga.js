@@ -48,6 +48,7 @@ export function* GET_TOTALS_COUNTRIES() {
 		payload: {loadingTable: true}
 	});
 	const response = yield call(apis.getTotalCountries);
+	debugger
 	if (response) {
 		let countryTotals = [];
 		for (let [key, value] of Object.entries(response[0])) {
